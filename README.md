@@ -1,3 +1,3 @@
-#信用白条引导页面
+#vuejs模板demo
 
-vue2.0
+vuejs2.0

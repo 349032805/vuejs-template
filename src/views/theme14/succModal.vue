@@ -15,11 +15,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { getWxLink } from "@/utils/wxLink";
-import { getSys } from "@/utils/system";
-import { getiOSLink } from "@/utils/iosLink";
-import { getAndroidLinkBox } from "@/utils/androidLink";
-import api from "../../api/api";
 
 export default {
   props: {
@@ -35,34 +30,6 @@ export default {
   methods: {
     download() {
       console.log("download!");
-
-      //如果是微信浏览器打开,去应用宝
-      //否则为普通打开,判断安卓还是ios系统,ios去苹果商店,安卓下载apk文件
-      //安卓先请求tag_apk,如果没有文件(返回错误),再请求dft_apk
-      // if (navigator.userAgent.indexOf("micromessenger") > 0) {
-      if (navigator.userAgent.match(/MicroMessenger/)) {
-        window.location.href = getWxLink();
-      } else {
-        if (getSys() == "ios") {
-          window.location.href = getiOSLink();
-        } else {
-          let box = getAndroidLinkBox();
-          let dft_apk_url = box.dft_apk;
-          let tag_apk_url = box.tag_apk;
-
-          // axios不支持跨域访问资源的回调,所以引入CDN zepto ajax判断
-          $.ajax({
-            url: tag_apk_url,
-            type: "HEAD",
-            error: function() {
-              window.location.href = dft_apk_url;
-            },
-            success: function() {
-              window.location.href = tag_apk_url;
-            }
-          });
-        }
-      }
     }
   }
 };

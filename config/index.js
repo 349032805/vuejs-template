@@ -28,19 +28,12 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/wzd': {
+      '/xxx': {
         target: 'http://192.168.8.101',
         changeOrigin: true,
         // pathRewrite: {
-        //   '^/wzd': ''
+        //   '^/xxxx': ''
         // }
-      },
-      '/access': {
-        target: 'http://qbres.wzdai.com',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/access': ''
-        }
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

@@ -7,10 +7,10 @@ const theme14 = r => require.ensure([], () => r(require('../views/theme14/theme1
 const agreement = r => require.ensure([], () => r(require('../views/agreement')), 'agreement')
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   component: theme14
-    // },
+    {
+      path: '/',
+      component: theme14
+    },
     {
       path: '/theme14',
       name: 'theme14',
