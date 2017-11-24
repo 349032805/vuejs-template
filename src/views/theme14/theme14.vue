@@ -1,8 +1,8 @@
 <template>
   <div class="theme14">
       <div class="form">
+        <p class="time-demo">{{timeStr}}</p>
         <div class="box">
-
           <div class="phone-box">
              <img src="../../images/person_icon.png" class="person-icon">
              <input type="tel" placeholder="请输入您的手机号" maxlength="11" v-model="telephone">
@@ -50,11 +50,14 @@ export default {
       showTip: false,
       hasRegister: false,
       showSuccTip: false,
-      message: ""
+      message: "",
+      intDiff: 907766,
+      timeStr: ""
     };
   },
   created() {
     console.log("进入首页!");
+    this.countDown();
   },
   methods: {
     getPhone() {
@@ -124,6 +127,32 @@ export default {
     },
     gotoAgreement() {
       this.$router.push({ name: "agreement" });
+    },
+    countDown() {
+      let day = 0,
+        hour = 0,
+        minute = 0,
+        second = 0; //时间默认值
+      if (this.intDiff > 0) {
+        day = Math.floor(this.intDiff / (60 * 60 * 24));
+        hour = Math.floor(this.intDiff / (60 * 60)) - day * 24;
+        minute = Math.floor(this.intDiff / 60) - day * 24 * 60 - hour * 60;
+        second =
+          Math.floor(this.intDiff) -
+          day * 24 * 60 * 60 -
+          hour * 60 * 60 -
+          minute * 60;
+      }
+      if (minute <= 9) {
+        minute = "0" + minute;
+      }
+      if (second <= 9) {
+        second = "0" + second;
+      }
+      this.timeStr = day + "天" + hour + "时" + minute + "分" + second + "秒";
+      console.log(this.timeStr);
+      this.intDiff -= 1;
+      setTimeout(this.countDown, 1000);
     }
   },
   components: {
