@@ -41,7 +41,6 @@
 <script type="text/ecmascript-6">
 import countDownBtn from "@/components/countDownBtn";
 import tipModal from "@/components/tipModal";
-import { getSys } from "@/utils/system";
 export default {
   data() {
     return {
@@ -59,7 +58,6 @@ export default {
   created() {
     console.log("进入首页!");
     this.countDown();
-    alert(getSys());
   },
   methods: {
     getPhone() {
