@@ -28,13 +28,30 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/xxx': {
-        target: 'http://192.168.8.101',
-        changeOrigin: true,
-        // pathRewrite: {
-        //   '^/xxxx': ''
-        // }
-      }
+      // '/xxx': {
+      //   target: 'http://192.168.8.101',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '^/xxxx': ''
+      //   }
+      // },
+      // "auto-custom-rule": {
+      //   filter: function (pathname) {
+      //     if (/(\.css|\.js|\.html|\.htm|\.ico|\.jpg|\.png)(\?.*?)?$/i.test(pathname)) {
+      //       return false;
+      //     }
+
+      //     if (pathname == '/') {
+      //       return false;
+      //     }
+      //     // 剩余路径走代理
+      //     return true;
+      //   },
+      //   target: 'http://games-api.wzdai.com',
+      //   changeOrigin: true,
+      //   pathRewrite: {}
+      // }
+
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
